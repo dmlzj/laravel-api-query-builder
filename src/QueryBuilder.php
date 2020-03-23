@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator as BasePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 use Unlu\Laravel\Api\Exceptions\UnknownColumnException;
 use Unlu\Laravel\Api\UriParser;
 
@@ -378,12 +379,12 @@ class QueryBuilder
 
     private function setterMethodName($key)
     {
-        return 'set' . studly_case($key);
+        return 'set' . Str::studly($key);
     }
 
     private function customFilterName($key)
     {
-        return 'filterBy' . studly_case($key);
+        return 'filterBy' . Str::studly($key);
     }
 
     private function addAppendsToModel($result)
